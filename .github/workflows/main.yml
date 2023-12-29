@@ -1,0 +1,38 @@
+name: Main
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      
+      # git setup must happen before npm version
+      - run: git config user.name "GitHub Actions"
+      - run: git config user.email "actions@github.com"
+      # Version
+      - run: npm version patch --git-tag-version false # git-tag-version is false to stop automatic commit without [skip ci] message to stop inifinite build loop
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - run: echo ${{ steps.package-version.outputs.current-version}}
+      - run: git add package.json
+      - run: git commit -m "[skip ci]"
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: git push
+      - run: git tag $VERSION
+      - run: git push --tags

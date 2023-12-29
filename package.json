@@ -1,0 +1,31 @@
+{
+  "name": "@fe26labs/eslint-config-fe26labs",
+  "version": "0.1.9",
+  "description": "This package provides FE26 Labs .eslintrc as an extensible shared config.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fe26labs/eslint-config-fe26labs.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "fe26labs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/fe26labs/eslint-config-fe26labs/",
+  "peerDependencies": {
+    "eslint": "5.5.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.1"
+  },
+  "publishConfig": {
+    "@fe26labs:registry": "https://npm.pkg.github.com"
+  }
+}

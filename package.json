@@ -1,6 +1,6 @@
 {
   "name": "@fe26labs/eslint-config-fe26labs",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "This package provides FE26 Labs .eslintrc as an extensible shared config.",
   "main": "index.js",
   "scripts": {
